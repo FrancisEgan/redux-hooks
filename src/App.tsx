@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Dispatch } from 'redux';
 import { AppState } from './store';
 import { Message } from './store/chat/types';
 import { updateSession } from './store/system/actions';
@@ -20,7 +19,7 @@ const App: React.FC = () => {
   const messages = useSelector<AppState, Message[]>(
     state => state.chat.messages
   );
-  const dispatch: Dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(
@@ -44,9 +43,8 @@ const App: React.FC = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    console.log('test');
-    thunkSendMessage('This message was sent by a thunk!');
-  }, []);
+    dispatch(thunkSendMessage('This message was sent by a thunk!'));
+  }, [dispatch]);
 
   const dispatchMessage = (message: string) => {
     dispatch(
@@ -73,16 +71,5 @@ const App: React.FC = () => {
     </div>
   );
 };
-
-// const mapStateToProps = (state: AppState) => ({
-//   system: state.system,
-//   chat: state.chat
-// });
-
-// export default connect(mapStateToProps, {
-//   sendMessage,
-//   updateSession,
-//   thunkSendMessage
-// })(App);
 
 export default App;
