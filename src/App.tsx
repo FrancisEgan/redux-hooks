@@ -3,11 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { AppState } from './store';
 import { Message } from './store/chat/types';
 import { updateSession } from './store/system/actions';
-import { sendMessage } from './store/chat/actions';
+// import { sendMessage } from './store/chat/actions';
 import { thunkSendMessage } from './thunks';
 import ChatHistory from './ChatHistory';
 import ChatInterface from './ChatInterface';
 import './main.css';
+import { sendMessage } from './store/chat';
 
 export type UpdateMessageParam = React.SyntheticEvent<{ value: string }>;
 

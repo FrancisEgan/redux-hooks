@@ -4,10 +4,12 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { systemReducer } from './system/reducers';
 import { chatReducer } from './chat/reducers';
+import chatNew from './chat';
 
 const rootReducer = combineReducers({
   system: systemReducer,
-  chat: chatReducer
+  chat: chatReducer,
+  chatNew: chatNew
 });
 
 export type AppState = ReturnType<typeof rootReducer>;
